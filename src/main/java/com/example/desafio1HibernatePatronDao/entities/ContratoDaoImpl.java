@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,7 @@ public class ContratoDaoImpl implements ContratoDaoI{
 	
 
 	@Override
+	@Transactional
 	public List<Contrato> findAll() {
 		Session s = entityManager.unwrap(Session.class);	
 		List<Contrato> l = (List<Contrato>) s.createQuery("FROM Contrato").getResultList();		

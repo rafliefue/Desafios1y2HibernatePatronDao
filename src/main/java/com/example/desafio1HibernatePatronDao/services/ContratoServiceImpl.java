@@ -39,7 +39,6 @@ public class ContratoServiceImpl implements ContratoServiceI{
 		return contratoDao.searchById(idCliente);
 	}
 	
-	
 
 	@Override
 	@Transactional

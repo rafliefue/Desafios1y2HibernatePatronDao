@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="ALUMNO", schema="hibernate")
+@Table(name="ALUMNO", schema="HibernateDesafio")
 public class Cliente {
 
 	@Id

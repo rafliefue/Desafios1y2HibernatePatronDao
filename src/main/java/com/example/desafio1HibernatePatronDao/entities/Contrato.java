@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.transaction.Transactional;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="CONTRATO", schema="hibernate")
+@Table(name="CONTRATO", schema="HibernateDesafio")
 public class Contrato {
 
 	@Id
@@ -39,7 +40,7 @@ public class Contrato {
 	@Temporal(TemporalType.DATE)
 	private Date fechaCaducidad;
 	
-	@Column(name = "PRECIO", nullable = false, precision = 50)
+	@Column(name = "PRECIO")
 	private Double precio;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
