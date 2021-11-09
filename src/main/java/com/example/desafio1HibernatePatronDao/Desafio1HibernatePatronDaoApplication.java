@@ -34,7 +34,7 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 		
 		System.out.println("***CREACIÓN***");
 		System.out.println(c.getNombre() + " " + c.getPrimerApellido() + " " + c.getSegundoApellido()); //Mostramos el cliente creado
-		
+		System.out.println("================================");
 		clienteService.save(c); //Guardamos el cliente en la bbdd
 		
 		Long clienteId = c.getId();
@@ -42,7 +42,7 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 		
 		System.out.println("***Búsqueda en BBDD POR ID***");
 		System.out.println(c2.getNombre() + " " + c2.getPrimerApellido() + " " + c2.getSegundoApellido()); //Mostramos a traves de bbdd
-		
+		System.out.println("================================");
 		//Insertando varios clientes
 		
 		Cliente c3 = new Cliente();
@@ -69,7 +69,7 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 		for (Cliente a : l) {
 			System.out.println(a.getNombre() + " " + a.getPrimerApellido() + " " + a.getSegundoApellido()); //Mostramos a traves de bbdd
 		}
-		
+		System.out.println("================================");
 		//Eliminando un cliente
 		
 		System.out.println("***ACTUALIZANDO CLIENTE en BBDD***");
@@ -83,19 +83,19 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 		Cliente c6 = clienteService.searchById(c5.getId());
 		System.out.println(c5.getNombre() + " " + c6.getPrimerApellido() + " " + c6.getSegundoApellido()); //Mostramos el cliente creado
 		
-		
+		System.out.println("================================");
 		//Búsqueda por Nombre
 		
 		System.out.println("***Búsqueda en BBDD POR NOMBRE (Pedro)***");
 		Cliente c7 = clienteService.searchByNombre("Pedro");
 		System.out.println(c7.getNombre() + " " + c7.getPrimerApellido() + " " + c7.getSegundoApellido()); //Mostramos a traves de bbdd
-				
+		System.out.println("================================");		
 		//Búsqueda por Apellido
 				
 		System.out.println("***Búsqueda en BBDD POR NOMBRE (Lopez)***");
-		//Cliente c8 = clienteService.searchByApellido("Lopez");
-		//System.out.println(c8.getNombre() + " " + c8.getPrimerApellido() + " " + c8.getSegundoApellido()); //Mostramos a traves de bbdd
-				
+		Cliente c8 = clienteService.searchByApellido("Lopez");
+		System.out.println(c8.getNombre() + " " + c8.getPrimerApellido() + " " + c8.getSegundoApellido()); //Mostramos a traves de bbdd
+		System.out.println("================================");		
 	
 	}
 

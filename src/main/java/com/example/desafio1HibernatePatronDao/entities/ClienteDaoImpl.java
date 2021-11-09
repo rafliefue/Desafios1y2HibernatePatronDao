@@ -34,6 +34,41 @@ public class ClienteDaoImpl implements ClienteDaoI{
 		return c;
 	}
 	
+	@Override
+	public Cliente searchByNombre(String nombre1) {
+		
+		Session s = entityManager.unwrap(Session.class);	
+		List<Cliente> l = (List<Cliente>) s.createQuery("FROM Cliente").getResultList();
+		
+		Cliente c = new Cliente();
+		
+		for (Cliente a : l){
+			if (a.getNombre().equals(nombre1)) {
+				c = a;
+			}
+		}
+
+		s.close();
+		return c;
+	}
+
+	@Override
+	public Cliente searchByApellido(String apellido) {
+		Session s = entityManager.unwrap(Session.class);	
+		List<Cliente> l = (List<Cliente>) s.createQuery("FROM Cliente").getResultList();
+		
+		Cliente c = new Cliente();
+		
+		for (Cliente a : l){
+			if (a.getPrimerApellido().equals(apellido) || a.getSegundoApellido().equals(apellido)) {
+				c = a;
+			}
+		}
+
+		s.close();
+		return c;
+	}
+	
 
 	@Override
 	public List<Cliente> findAll() {
@@ -61,23 +96,6 @@ public class ClienteDaoImpl implements ClienteDaoI{
 		
 	}
 
-	@Override
-	public Cliente searchByNombre(String nombre1) {
-		
-		Session s = entityManager.unwrap(Session.class);	
-		Cliente c = (Cliente) s.createQuery("FROM Cliente WHERE nombre = " + nombre1).uniqueResult();		
-
-		s.close();
-		return c;
-	}
-
-	@Override
-	public Cliente searchByApellido(String apellido) {
-		Session s = entityManager.unwrap(Session.class);	
-		Cliente c = (Cliente) s.createQuery("FROM Cliente WHERE primerApellido or segundoApellido = " + apellido).uniqueResult();		
-		s.close();
-		
-		return c;
-	}
+	
 
 }

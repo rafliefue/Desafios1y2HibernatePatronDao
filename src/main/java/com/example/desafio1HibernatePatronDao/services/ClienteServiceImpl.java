@@ -20,21 +20,25 @@ public class ClienteServiceImpl implements ClienteServiceI{
 	private ClienteDaoI clienteDao;
 
 	@Override
+	@Transactional
 	public void save(Cliente c) {
 		clienteDao.save(c);	
 	}
 
 	@Override
+	@Transactional
 	public Cliente searchById(Long idCliente) {
 		return clienteDao.searchById(idCliente);
 	}
 
 	@Override
+	@Transactional
 	public List<Cliente> findAll() {
 		return clienteDao.findAll();
 	}
 
 	@Override
+	@Transactional
 	public void delete(Cliente c) {
 		clienteDao.delete(c);		
 	}
@@ -46,11 +50,13 @@ public class ClienteServiceImpl implements ClienteServiceI{
 	}
 
 	@Override
+	@Transactional
 	public Cliente searchByNombre(String nombre) {
 		return clienteDao.searchByNombre(nombre);
 	}
 
 	@Override
+	@Transactional
 	public Cliente searchByApellido(String apellido) {
 		return clienteDao.searchByApellido(apellido);
 	}
