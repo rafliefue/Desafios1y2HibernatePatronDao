@@ -43,6 +43,9 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 		System.out.println("***Búsqueda en BBDD POR ID***");
 		System.out.println(c2.getNombre() + " " + c2.getPrimerApellido() + " " + c2.getSegundoApellido()); //Mostramos a traves de bbdd
 		System.out.println("================================");
+		
+		
+		
 		//Insertando varios clientes
 		
 		Cliente c3 = new Cliente();
@@ -60,6 +63,21 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 		clienteService.save(c3); //Guardamos el cliente en la bbdd
 		clienteService.save(c4); //Guardamos el cliente en la bbdd
 		
+		//Búsqueda por Nombre
+		
+		System.out.println("***Búsqueda en BBDD POR NOMBRE (Pedro)***");
+		Cliente c7 = clienteService.searchByNombre("Pedro");
+		System.out.println(c7.getNombre() + " " + c7.getPrimerApellido() + " " + c7.getSegundoApellido()); //Mostramos a traves de bbdd
+		System.out.println("================================");		
+		//Búsqueda por Apellido
+				
+		System.out.println("***Búsqueda en BBDD POR APELLIDO (Lopez)***");
+		Cliente c8 = clienteService.searchByApellido("Lopez");
+		System.out.println(c8.getNombre() + " " + c8.getPrimerApellido() + " " + c8.getSegundoApellido()); //Mostramos a traves de bbdd
+		System.out.println("================================");		
+	
+	
+		
 		
 		//Búsqueda de todos los clientes
 		
@@ -70,7 +88,8 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 			System.out.println(a.getNombre() + " " + a.getPrimerApellido() + " " + a.getSegundoApellido()); //Mostramos a traves de bbdd
 		}
 		System.out.println("================================");
-		//Eliminando un cliente
+		
+		//Actualizando un cliente
 		
 		System.out.println("***ACTUALIZANDO CLIENTE en BBDD***");
 		
@@ -82,21 +101,25 @@ public class Desafio1HibernatePatronDaoApplication implements CommandLineRunner{
 		
 		Cliente c6 = clienteService.searchById(c5.getId());
 		System.out.println(c5.getNombre() + " " + c6.getPrimerApellido() + " " + c6.getSegundoApellido()); //Mostramos el cliente creado
-		
 		System.out.println("================================");
-		//Búsqueda por Nombre
 		
-		System.out.println("***Búsqueda en BBDD POR NOMBRE (Pedro)***");
-		Cliente c7 = clienteService.searchByNombre("Pedro");
-		System.out.println(c7.getNombre() + " " + c7.getPrimerApellido() + " " + c7.getSegundoApellido()); //Mostramos a traves de bbdd
-		System.out.println("================================");		
-		//Búsqueda por Apellido
+		//Eliminando un cliente
+		
+		Cliente c9 = clienteService.searchById((long) 3);
+						
+		clienteService.delete(c9); //Actualizamos
 				
-		System.out.println("***Búsqueda en BBDD POR NOMBRE (Lopez)***");
-		Cliente c8 = clienteService.searchByApellido("Lopez");
-		System.out.println(c8.getNombre() + " " + c8.getPrimerApellido() + " " + c8.getSegundoApellido()); //Mostramos a traves de bbdd
-		System.out.println("================================");		
+		//Búsqueda de todos los clientes
+		
+			List<Cliente> l2 = clienteService.findAll(); //Guardamos el cliente en la bbdd
+				
+			System.out.println("***Búsqueda GENERAL en BBDD DESPUES DE BORRAR***");
+			
+			for (Cliente a : l2) {
+				System.out.println(a.getNombre() + " " + a.getPrimerApellido() + " " + a.getSegundoApellido()); //Mostramos a traves de bbdd
+			}
+			
+			System.out.println("================================");
 	
 	}
-
 }
